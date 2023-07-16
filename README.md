@@ -19,3 +19,10 @@
 # What This project is doing ?
 - This project is about transforming data using some custom formula.
 - Helper Folder have 3 files (2 inputs comission.csv and orders.csv) and one output file (transofrmed_data.csv)
+
+Screenshots
+
+![Screenshot](https://github.com/NeerajBatheja/airflow-case-study/blob/master/screenshots/screenshot%20airflow%201.png)
+![Screenshot](https://github.com/NeerajBatheja/airflow-case-study/blob/master/screenshots/screenshot%20airflow%202.png)
+![Screenshot](https://github.com/NeerajBatheja/airflow-case-study/blob/master/screenshots/screenshot%20airflow%203.png)
+![Screenshot](https://github.com/NeerajBatheja/airflow-case-study/blob/master/screenshots/screenshot%20airflow%204.png)
