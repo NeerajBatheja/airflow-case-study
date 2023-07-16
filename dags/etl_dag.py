@@ -25,7 +25,7 @@ default_args = {
     'owner': 'airflow',
     'start_date': datetime(2023, 7, 16),
     'depends_on_past': False,
-    'email': ['airflow@example.com'],
+    'email': ['hi@neerajbatheja.com'],
     'email_on_failure': False,
     'email_on_retry': False,
     'retries': 1,
