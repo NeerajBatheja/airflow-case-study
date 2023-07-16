@@ -1,0 +1,52 @@
+version: '3'
+
+services:
+  webserver:
+    image: airflow2:local
+    command: webserver
+    ports:
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ../keys:/opt/airflow/keys
+      - ./logs:/opt/airflow/logs
+      - ./dags:/opt/airflow/dags
+      - ./airflow.cfg:/opt/airflow/airflow.cfg
+  scheduler:
+    image: airflow2:local
+    command: scheduler
+    depends_on:
+      - webserver
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ../keys:/opt/airflow/keys
+      - ./logs:/opt/airflow/logs
+      - ./dags:/opt/airflow/dags
+      - ./airflow.cfg:/opt/airflow/airflow.cfg
+  flower:
+    image: airflow2:local
+    command: celery flower
+    depends_on:
+      - scheduler
+    ports:
+      - "5555:5555"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ../keys:/opt/airflow/keys
+      - ./logs:/opt/airflow/logs
+      - ./dags:/opt/airflow/dags
+      - ./airflow.cfg:/opt/airflow/airflow.cfg
+  worker:
+    image: airflow2:local
+    command: celery workerRUN chmod -R 777 /opt/airflow/helper
+    depends_on:
+      - scheduler
+    ports:
+      - "8793:8793" 
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ../keys:/opt/airflow/keys
+      - ./logs:/opt/airflow/logs
+      - ./dags:/opt/airflow/dags
+      - ./airflow.cfg:/opt/airflow/airflow.cfg
+
